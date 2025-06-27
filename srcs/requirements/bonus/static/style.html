@@ -1,0 +1,41 @@
+/* ----- Global layout ----- */
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background:#f9fafb;
+  color:#111827;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+}
+
+/* ----- Resume card ----- */
+.resume-card{
+  background:white;
+  padding:2rem 3rem;
+  border-radius:1rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.06);
+  max-width:480px;
+  width:90%;
+}
+
+.resume-card h1{
+  margin-top:0;
+  font-size:1.75rem;
+  letter-spacing:-.5px;
+}
+
+.resume-card ul{
+  list-style:none;
+  padding-left:0;
+  margin:1.25rem 0 0;
+  line-height:1.6;
+}
+
+.resume-card li::before{
+  content:"•";
+  margin-right:.6rem;
+  color:#6366f1;
+  font-weight:bold;
+}

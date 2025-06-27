@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.resume-card {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  max-width: 480px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li::before {
+  content: "•";
+  margin-right: 0.6rem;
+  color: #6366f1;
+}

@@ -68,6 +68,17 @@ services:
       - inception
     restart: always
 
+  static:
+    build:
+      context: .
+      dockerfile: requirements/bonus/static/Dockerfile
+    container_name: static
+    ports:
+      - "8880:80"
+    networks:
+      - inception
+    restart: always
+
   vsftpd:
     build:
       context: .
@@ -98,6 +109,23 @@ services:
     networks:
      - inception
     restart: always
+
+  cadvisor:
+    build:
+      context: .
+      dockerfile: requirements/bonus/cadvisor/Dockerfile
+    container_name: cadvisor
+    ports:
+       - "6060:8080"
+    volumes:
+       - /:/rootfs:ro
+       - /var/run:/var/run:ro
+       - /sys:/sys:ro
+       - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+       - inception
+    restart: always
+
 volumes:
   wp-volume:
     driver_opts:
