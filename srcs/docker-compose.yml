@@ -1,5 +1,18 @@
 version: '3'
 
+volumes:
+  wp-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/${USER}/data/wordpress
+
+  db-volume:
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/${USER}/data/mariadb
+
 services:
   nginx:
     build:
@@ -79,23 +92,23 @@ services:
       - inception
     restart: always
 
-  vsftpd:
-    build:
-      context: .
-      dockerfile: requirements/bonus/vsftpd/Dockerfile
-      args:
-        FTP_USR: ${FTP_USR}
-        FTP_PWD: ${FTP_PWD}
-    container_name: vsftpd
-    depends_on:
-      - wordpress
-    ports:
-      - "21:21"
-    volumes:
-      - wp-volume:/var/www/
-    networks:
-     - inception
-    restart: always
+#  vsftpd:
+#    build:
+#      context: .
+#      dockerfile: requirements/bonus/vsftpd/Dockerfile
+#      args:
+#        FTP_USR: ${FTP_USR}
+#        FTP_PWD: ${FTP_PWD}
+#    container_name: vsftpd
+#    depends_on:
+#      - wordpress
+#    ports:
+#      - "21:21"
+#    volumes:
+#      - wp-volume:/var/www/
+#    networks:
+#     - inception
+#    restart: always
 
   adminer:
     build:
@@ -125,19 +138,6 @@ services:
     networks:
        - inception
     restart: always
-
-volumes:
-  wp-volume:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/${USER}/data/wordpress
-
-  db-volume:
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/${USER}/data/mariadb
 
 networks:
     inception:
